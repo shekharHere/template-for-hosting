@@ -12,6 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: gray;
         }
         .login-container {
             border: 1px solid #ccc;
@@ -47,13 +48,15 @@
     </div>
     <script>
         function triggerResponse() {
-            let email = document.getElementById('email');
-            let name = document.getElementById('name');
+            let email = document.getElementById('email').value;
+            let name = document.getElementById('name').value;
             let dataObj = {
                 email: email,
                 name: name
             }
-            window.parent.postMessage(dataObj, "*");
+            let data = JSON.stringify(dataObj);
+            // console.log(dataObj);
+            window.parent.postMessage(data, "*");
         }
     </script>
 </body>

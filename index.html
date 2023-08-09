@@ -43,11 +43,13 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             
-            <button type="submit">Login</button>
+            <button type="submit" onClick="triggerResponse()">Login</button>
         </form>
     </div>
     <script>
-        window.parent.postMessage("accessToken", "*");
+        function triggerResponse() {
+            window.parent.postMessage("accessToken", "*");
+        }
     </script>
 </body>
 </html>

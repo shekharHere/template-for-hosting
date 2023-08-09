@@ -37,18 +37,23 @@
     <div class="login-container">
         <h2>Login</h2>
         <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-            
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            
             <button type="submit" onClick="triggerResponse()">Login</button>
         </form>
     </div>
     <script>
         function triggerResponse() {
-            window.parent.postMessage("accessToken", "*");
+            let email = document.getElementById('email');
+            let name = document.getElementById('name');
+            let dataObj = {
+                email: email,
+                name: name
+            }
+            window.parent.postMessage(dataObj, "*");
         }
     </script>
 </body>

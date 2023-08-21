@@ -43,21 +43,46 @@
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-            <button type="submit" onClick="triggerResponse()">Login</button>
+            <input type="file" id="imageInput">
+            <button onclick="convertToBase64()">Convert to Base64</button>
+            <div id="base64ImageContainer"></div>
         </form>
     </div>
     <script>
-        function triggerResponse() {
+        function triggerResponse(imgBase64) {
             let email = document.getElementById('email').value;
             let name = document.getElementById('name').value;
             let dataObj = {
                 email: email,
-                name: name
+                name: name,
+                imgBase64: imgBase64
             }
             let data = JSON.stringify(dataObj);
-            console.log("dataObj");
+            console.log(dataObj);
             window.parent.postMessage(data, "*");
         }
+
+        function convertToBase64() {
+            const inputElement = document.getElementById('imageInput');
+            const base64ImageContainer = document.getElementById('base64ImageContainer');
+      
+            const file = inputElement.files[0];
+      
+            if (file) {
+              const reader = new FileReader();
+      
+              reader.onload = function(event) {
+                const base64Image = event.target.result;
+                // base64ImageContainer.innerHTML = `<img src="${base64Image}" alt="Image">`;
+      
+                // Display the base64-encoded string
+                // console.log(base64Image);
+                triggerResponse(base64Image);
+              };
+      
+              reader.readAsDataURL(file);
+            }
+          }
     </script>
 </body>
 </html>

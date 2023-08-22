@@ -84,7 +84,7 @@
             }
           }
 
-          window.addEventListener('message', function(event) {
+        window.addEventListener('message', function(event) {
             event.preventDefault();
             console.log(JSON.parse(event.data));
             var userData = JSON.parse(event.data);

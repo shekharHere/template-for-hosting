@@ -83,6 +83,11 @@
               reader.readAsDataURL(file);
             }
           }
+
+          window.addEventListener('message', function(event) {
+            event.preventDefault();
+            console.log(JSON.parse(event.data));
+        });
     </script>
 </body>
 </html>

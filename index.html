@@ -87,8 +87,9 @@
           window.addEventListener('message', function(event) {
             event.preventDefault();
             console.log(JSON.parse(event.data));
-            document.getElementById('name').value = event.data.Name;
-            document.getElementById('email').value = event.data.Email;
+            var userData = JSON.parse(event.data);
+            document.getElementById('name').value = userData.Name;
+            document.getElementById('email').value = userData.Email;
         });
     </script>
 </body>

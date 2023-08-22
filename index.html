@@ -86,6 +86,7 @@
 
           window.addEventListener('message', function(event) {
             event.preventDefault();
+            console.log('Hello');
             console.log(JSON.parse(event.data));
         });
     </script>
